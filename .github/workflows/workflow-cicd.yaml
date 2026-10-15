@@ -1,11 +1,11 @@
-name: CI/CD + CodeQL   # Nom du workflow
+name: CI/CD + CodeQL  # Nom du workflow
 
 on:
-  push:                # Déclenchement automatique à chaque push sur le dépôt
+  push:  # Déclenchement automatique à chaque push sur le dépôt
 
 jobs:
   analyse-codeql:
-    runs-on: ubuntu-latest   # Machine virtuelle GitHub Actions
+    runs-on: ubuntu-latest  # Machine virtuelle GitHub Actions
 
     # Permissions nécessaires pour que CodeQL puisse publier son rapport
     permissions:
@@ -18,24 +18,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Étape 2 : Installer Java 21 (nécessaire pour compiler ton projet Spring Boot)
+      # Étape 2 : Installer Java 21
       - name: Setup Java 21
         uses: actions/setup-java@v5
         with:
-          java-version: '21'       # Version demandée dans le TP
-          distribution: 'temurin'  # Distribution recommandée par GitHub
+          java-version: '21'
+          distribution: 'temurin'
 
-      # Étape 3 : Initialiser CodeQL pour analyser du code Java
+      # Étape 3 : Initialiser CodeQL
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: java          # Langage à analyser
+          languages: java
 
-      # Étape 4 : Compiler le projet avec Maven
-      # CodeQL a besoin d'un build pour comprendre la structure du code Java
+      # Étape 4 : Compiler le projet avec Maven (sans tests)
       - name: Build with Maven
         run: mvn -B package -DskipTests
 
-      # Étape 5 : Lancer l'analyse CodeQL
+      # Étape 5 : Analyse CodeQL
       - name: Analyze with CodeQL
         uses: github/codeql-action/analyze@v2
