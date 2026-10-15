@@ -46,6 +46,6 @@ jobs:
       # Upload du rapport JaCoCo
       - name: Upload JaCoCo report
         uses: actions/upload-artifact@v4
-        wwith:
+        with:   # <-- CORRECT
           name: jacoco-report
           path: target/site/jacoco/
