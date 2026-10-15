@@ -1,5 +1,5 @@
-name: Exemple Bonjour
-run-name: Exemple Bonjour
+name: Affichage
+
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Récupération code source
-        -uses: action/checkout@v4
+      - uses: actions/checkout@v4
 
-        -name: Affichage des fichiers du projet
-        run: ls -R
+      - name: Affichage des fichiers du projet
+        run: "ls -R"
