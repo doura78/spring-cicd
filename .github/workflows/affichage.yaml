@@ -1,0 +1,16 @@
+name: Affichage
+
+on:
+  workflow_dispatch:
+
+jobs:
+  affichage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération code source
+        uses: actions/checkout@v7
+
+      - name: Affichage des fichiers du projet
+        run: ls -R
+

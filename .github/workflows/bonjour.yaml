@@ -1,16 +1,14 @@
-name: Affichage
+name: Exemple Bonjour
+run-name: Exemple Bonjour
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ "main" ]
 
 jobs:
-  affichage:
+  dire-bonjour:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupération code source
-        uses: actions/checkout@v7
-
-      - name: Affichage des fichiers du projet
-        run: ls -R
-
+      - name: Afficher Bonjour
+        run: echo "Bonjour depuis gitHub Actions !"
