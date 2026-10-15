@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Récupération code source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Affichage des fichiers du projet
         run: ls -R
