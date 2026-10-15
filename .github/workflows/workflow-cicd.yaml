@@ -20,14 +20,14 @@ jobs:
 
       # Étape 2 : Installer Java 21 (nécessaire pour compiler ton projet Spring Boot)
       - name: Setup Java 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '21'       # Version demandée dans le TP
           distribution: 'temurin'  # Distribution recommandée par GitHub
 
       # Étape 3 : Initialiser CodeQL pour analyser du code Java
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: java          # Langage à analyser
 
