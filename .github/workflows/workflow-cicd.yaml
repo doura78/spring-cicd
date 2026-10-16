@@ -33,8 +33,17 @@ jobs:
 
       # Étape 4 : Compiler le projet avec Maven (sans tests)
       - name: Build with Maven
-        run: mvn -B package -DskipTests
+        run: mvn -B  clean verify -Dspring.profiles.active=test
+
+      - name: Générer le site Maven
+        run: mvn site
+
+      - name: Upload Checkstyle report
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkstyle-report
+          path: target/site/
 
       # Étape 5 : Analyse CodeQL
       - name: Analyze with CodeQL
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
